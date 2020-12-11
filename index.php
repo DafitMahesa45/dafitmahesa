@@ -1,37 +1,29 @@
+<!DOCTYPE html>
 <html>
 <head>
-  <title>Aplikasi CRUD </title>
-</head> 
+<title>Membuat Login Multi User Level Dengan PHP dan MySQLi </title>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
 <body>
-  <h1>Data Siswa</h1>
-  <a href="form_simpan.php">Tambah Data</a><br><br>
-  <table border="1" width="100%">
-  <tr>
-    <th>Foto</th>
-    <th>NIS</th>
-    <th>Nama</th>
-    <th>Jenis Kelamin</th>
-    <th>Telepon</th>
-    <th>Alamat</th>
-    <th colspan="2">Aksi</th>
-  </tr>
-  <?php
-  include "koneksi.php";
-  $sql = mysql_query($connect, "SELECT * FROM siswa");
-  
-  while($data = mysqli_fetch_array($sql)){ 
-    echo "<tr>";
-    echo "<td><img src='images/".$data['foto']."' width='100' height='100'></td>";
-    echo "<td>".$data['nis']."</td>";
-    echo "<td>".$data['nama']."</td>";
-    echo "<td>".$data['jenis_kelamin']."</td>";
-    echo "<td>".$data['telp']."</td>";
-    echo "<td>".$data['alamat']."</td>";
-    echo "<td><a href='form_ubah.php?nis=".$data['nis']."'>Ubah</a></td>";
-    echo "<td><a href='proses_hapus.php?nis=".$data['nis']."'>Hapus</a></td>";
-    echo "</tr>";
-  }
-  ?>
-  </table>
+ <h1>Membuat Login Multi User Level Dengan PHP dan MySQLi <br/> SMKN 7 Baleendah</h1>
+<?php 
+	if(isset($_GET['pesan'])){
+		if($_GET['pesan']=="gagal"){
+			echo "<div class='alert'>Username dan Password tidak sesuai !</div>";
+		}
+	}
+?>
+ <div class="kotak_login">
+	<p class="tulisan_login">Silahkan login</p>
+ 	<form action="cek_login.php" method="post">
+		<label>Username</label>
+	<input type="text" name="username" class="form_login" placeholder="Username .." required="required">
+ 		<label>Password</label>
+	<input type="password" name="password" class="form_login" placeholder="Password .." required="required">
+ 		<input type="submit" class="tombol_login" value="LOGIN">
+ 	<br/>
+	<br/>
+	</form>		
+</div>
 </body>
 </html>
